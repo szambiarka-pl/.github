@@ -1,0 +1,117 @@
+[
+  {
+    "name": "P0",
+    "color": "b60205",
+    "description": "Fala 1: strona główna, katalog usług, cennik, filary poradnika, /firma."
+  },
+  {
+    "name": "P1",
+    "color": "d93f0b",
+    "description": "Fala 2: szablon lokalny, województwa, paczki gmin, audyt miast, decyzje E4."
+  },
+  {
+    "name": "P2",
+    "color": "fbca04",
+    "description": "Fala 3: hub poradnika, opublikowane artykuły poza filarami, L4, rejestracja firmy."
+  },
+  {
+    "name": "P3",
+    "color": "c5def5",
+    "description": "Fala 4: nowe klastry (po decyzji), strony konwersji. Nowy URL na końcu."
+  },
+  {
+    "name": "typ: epic",
+    "color": "5319e7",
+    "description": "Issue nadrzędne obszaru. Treść stron jest w sub-issues, nie w epiku."
+  },
+  {
+    "name": "typ: strona",
+    "color": "0e8a16",
+    "description": "Jeden indeksowalny URL spoza poradnika MDX. W issue jest pełny tekst."
+  },
+  {
+    "name": "typ: artykul",
+    "color": "1d76db",
+    "description": "Jeden artykuł /poradnik/[slug] albo propozycja artykułu bez URL."
+  },
+  {
+    "name": "typ: szablon",
+    "color": "0052cc",
+    "description": "Kontrakt sekcji dla wielu URL-i. Nie zastępuje tekstu pojedynczej strony."
+  },
+  {
+    "name": "typ: decyzja",
+    "color": "f9d0c4",
+    "description": "Pytanie o nowy URL albo właściciela frazy. Bez szkicu strony do czasu odpowiedzi."
+  },
+  {
+    "name": "obszar: home",
+    "color": "bfd4f2",
+    "description": "Strona główna, właściciel frazy wywóz szamba."
+  },
+  {
+    "name": "obszar: uslugi",
+    "color": "bfdadc",
+    "description": "Katalog /wywoz-szamba. Właściciel geo frazy usługi asenizacyjne."
+  },
+  {
+    "name": "obszar: cennik",
+    "color": "fef2c0",
+    "description": "Strona /cennik, intencja transakcyjna cenowa."
+  },
+  {
+    "name": "obszar: poradnik",
+    "color": "d4c5f9",
+    "description": "Hub, kategorie i artykuły /poradnik."
+  },
+  {
+    "name": "obszar: lokalne",
+    "color": "c2e0c6",
+    "description": "Województwo, gmina, miasto, dzielnica, katalog /gminy i /miasta."
+  },
+  {
+    "name": "obszar: firmy",
+    "color": "fad8c7",
+    "description": "Strony pozyskania firmy: /firma i /firma/rejestracja."
+  },
+  {
+    "name": "obszar: slownik",
+    "color": "e6e6e6",
+    "description": "Hasła kategorii /poradnik/slownik i propozycje haseł."
+  },
+  {
+    "name": "obszar: konwersja",
+    "color": "eeeeee",
+    "description": "Kontakt, lista startowa, newsletter. Krótki tekst, nie artykuł."
+  },
+  {
+    "name": "flaga: kanibalizacja",
+    "color": "b60205",
+    "description": "Fraza ma już właściciela. Issue nie dostaje szkicu pod drugi URL."
+  },
+  {
+    "name": "flaga: nie-tworzyc-url",
+    "color": "000000",
+    "description": "Temat zostaje sekcją istniejącego URL. Nowy slug nie powstaje."
+  },
+  {
+    "name": "flaga: brak-faktow",
+    "color": "e99695",
+    "description": "Brakuje liczby, przepisu albo faktu lokalnego. Zdanie nie wchodzi do tekstu."
+  },
+  {
+    "name": "flaga: prawne",
+    "color": "5319e7",
+    "description": "Umowa, kara, obowiązek, kontrola. Zdanie ma cytat przepisu albo wypada."
+  },
+  {
+    "name": "flaga: soft-open",
+    "color": "006b75",
+    "description": "CTA klienta to /powiadom-mnie, CTA firmy to /firma. Zamówienia zamknięte."
+  },
+  {
+    "name": "flaga: zamrozone",
+    "color": "cfd3d7",
+    "description": "URL zostaje. Zmiana treści tylko przy istotnej aktualizacji i z źródłem."
+  }
+]

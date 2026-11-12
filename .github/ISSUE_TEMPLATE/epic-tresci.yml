@@ -1,0 +1,108 @@
+name: Epik treści
+description: Obszar treści (typ strony albo klaster). Pełne teksty są w sub-issues, jeden URL na issue.
+title: "epik: "
+labels: ["typ: epic", "flaga: soft-open"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Epik grupuje sub-issues. W tym issue jest kontrakt obszaru i lista URL-i.
+        Pełny tekst strony wpisuje się w sub-issue z formularza „Strona lub artykuł”.
+
+        Szambiarka.pl jest pośrednikiem. Nie wykonuje wywozu, nie przyjmuje płatności
+        za wywóz i nie wystawia dokumentu za usługę. Firmy ustalają ceny. W soft-openie
+        zamówienia są zamknięte: CTA klienta to https://szambiarka.pl/powiadom-mnie ,
+        CTA firmy to https://szambiarka.pl/firma .
+
+        Jeden klaster ma jednego właściciela URL. Nowy slug powstaje dopiero, gdy
+        żaden istniejący URL tej frazy nie ma i Bartek to zaakceptuje.
+  - type: input
+    id: epic_id
+    attributes:
+      label: Identyfikator epika
+      description: Ze struktury, np. E01. Zostaje na stałe, także po zmianie tytułu.
+      placeholder: E01
+    validations:
+      required: true
+  - type: dropdown
+    id: priorytet
+    attributes:
+      label: Priorytet fali
+      description: P0 fala 1. P1 szablon lokalny i decyzje E4. P2 istniejące artykuły i L4. P3 nowe URL-e i konwersja.
+      options:
+        - P0
+        - P1
+        - P2
+        - P3
+    validations:
+      required: true
+  - type: dropdown
+    id: obszar
+    attributes:
+      label: Obszar
+      options:
+        - home
+        - uslugi
+        - cennik
+        - poradnik
+        - lokalne
+        - firmy
+        - slownik
+        - konwersja
+    validations:
+      required: true
+  - type: input
+    id: owner_url
+    attributes:
+      label: URL właściciel klastra
+      description: Adres, który wygrywa główną intencję tego epika. Puste tylko wtedy, gdy epik jest zbiorem szablonów bez jednej frazy.
+      placeholder: https://szambiarka.pl/
+    validations:
+      required: false
+  - type: textarea
+    id: cel
+    attributes:
+      label: Cel epika
+      description: Jedno zdanie o tym, jaką intencję obszar zamyka i czego nie przejmuje od innych epików.
+      placeholder: Właściciel frazy „wywóz szamba” bez nazwy miejscowości.
+    validations:
+      required: true
+  - type: textarea
+    id: dzieci
+    attributes:
+      label: Sub-issues
+      description: Jedna pozycja na linię. Przy istniejącym URL podaj pełny adres. Przy propozycji napisz „URL brak” i tytuł roboczy, bez wymyślonego slugu jako faktu.
+      placeholder: |
+        - [ ] https://szambiarka.pl/ — strona główna
+    validations:
+      required: true
+  - type: textarea
+    id: poza
+    attributes:
+      label: Poza epikiem
+      description: Frazy i URL-e, których ten epik nie opisuje, bo mają innego właściciela.
+      placeholder: |
+        - „wywóz szamba {miejscowość}” należy do L3/L4
+        - wyjaśnienie ceny należy do artykułu, karty cen do /cennik
+    validations:
+      required: true
+  - type: textarea
+    id: definicja
+    attributes:
+      label: Definicja ukończenia epika
+      description: Epik jest skończony, gdy każde dziecko jest Zaakceptowane albo Zablokowane z zapisaną decyzją, a żadne dziecko nie bierze frazy innego epika.
+    validations:
+      required: true
+  - type: checkboxes
+    id: kontrakt
+    attributes:
+      label: Kontrakt epika
+      options:
+        - label: Każdy punkt listy sub-issues to jeden URL albo jedna świadoma paczka (szablon, województwo gmin), nie „napisz treści o szambie”.
+          required: true
+        - label: Właściciel frazy jest zgodny z mapą fraz w bazie wiedzy SEO albo z decyzją zapisaną w issue typu decyzja.
+          required: true
+        - label: CTA w całym epiku prowadzi klienta na /powiadom-mnie, a firmę na /firma, dopóki zamówienia są zamknięte.
+          required: true
+        - label: Epik nie obiecuje wywozu, płatności przyjmowanej przez serwis ani dokumentu wystawianego przez serwis.
+          required: true

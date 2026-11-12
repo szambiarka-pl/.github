@@ -1,0 +1,255 @@
+name: Strona lub artykuł
+description: Pełny tekst jednego URL-a (albo decyzja, że URL nie powstaje). Nie samo zadanie „napisz tekst”.
+title: "treść: "
+labels: ["flaga: soft-open"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        To issue trzyma tekst, który po soft-openie trafi na stronę. W trakcie blokady
+        soft-openu nie powstaje z niego PR do kodu.
+
+        Szambiarka.pl jest pośrednikiem między właścicielem zbiornika a firmą
+        asenizacyjną. Nie wykonuje wywozu, nie przyjmuje płatności za wywóz i nie
+        wystawia dokumentu za usługę. Firmy ustalają ceny, bez abonamentu.
+
+        CTA w soft-openie:
+        - klient: https://szambiarka.pl/powiadom-mnie
+        - firma: https://szambiarka.pl/firma
+
+        Tytuł w polu meta jest bez sufiksu „| Szambiarka.pl” (dokleja go layout),
+        z wyjątkiem strony głównej, która ma tytuł absolutny i brand już w środku.
+        Wyświetlany tytuł ma mieć około 60 znaków. Opis około 155, na stronach
+        lokalnych nie więcej niż 165.
+
+        Schema FAQPage powtarza tylko pytania widoczne na stronie. Rich results FAQ
+        nie są dostępne dla tego serwisu. Na stronie lokalnej FAQ odpowiada na trzy
+        fakty tej miejscowości. Pytania o umowę, kary, kontrolę i cenę zostają
+        przy swoich artykułach i przy /cennik.
+
+        Artykuł poradnika w treści używa tylko nagłówków H2/H3, akapitów, list,
+        pogrubienia, linków, tabeli i wyróżnionego cytatu. Innych komponentów
+        renderer nie ma.
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Kanoniczny adres z https://szambiarka.pl . Gdy strony nie ma, wpisz „brak” i nie wymyślaj slugu jako istniejącego.
+      placeholder: https://szambiarka.pl/poradnik/co-to-jest-szambo-jak-dziala
+    validations:
+      required: true
+  - type: dropdown
+    id: epik
+    attributes:
+      label: Epik
+      options:
+        - E01 Strona główna
+        - E02 Katalog usług
+        - E03 Cennik
+        - E04 Filary poradnika
+        - E05 Strony dla firm
+        - E06 Hub poradnika
+        - E07 Przepisy i formalności
+        - E08 Eksploatacja
+        - E09 Szablon stron lokalnych
+        - E10 Województwa
+        - E11 Gminy
+        - E12 Miasta
+        - E13 Dzielnice i osiedla
+        - E14 Nowe klastry eksploatacji
+        - E15 Nowe klastry formalności
+        - E16 Słownik — nowe hasła
+        - E17 Decyzje o URL
+        - E18 Strony konwersji
+    validations:
+      required: true
+  - type: dropdown
+    id: typ
+    attributes:
+      label: Typ strony
+      options:
+        - strona główna
+        - katalog usług
+        - cennik
+        - hub poradnika
+        - kategoria poradnika
+        - artykuł poradnika
+        - hasło słownika
+        - strona dla firm
+        - województwo L2
+        - gmina L3
+        - miasto L3
+        - dzielnica lub osiedle L4
+        - katalog HTML gmin lub miast
+        - szablon sekcji
+        - konwersja
+        - decyzja o nowym URL
+    validations:
+      required: true
+  - type: dropdown
+    id: priorytet
+    attributes:
+      label: Priorytet
+      options:
+        - P0
+        - P1
+        - P2
+        - P3
+    validations:
+      required: true
+  - type: input
+    id: fraza
+    attributes:
+      label: Fraza główna
+      description: Jedna fraza, której właścicielem jest ten URL. Bez doklejania „i okolice” i bez drugiej miejscowości.
+      placeholder: wywóz szamba
+    validations:
+      required: true
+  - type: textarea
+    id: frazy_wspierajace
+    attributes:
+      label: Frazy wspierające
+      description: Warianty, które wolno użyć w tekście, bo nie mają własnego URL. Jedna fraza na linię. Pusta lista jest poprawna.
+      placeholder: |
+        opróżnianie szamba
+        wywóz nieczystości płynnych
+    validations:
+      required: false
+  - type: dropdown
+    id: intencja
+    attributes:
+      label: Intencja
+      options:
+        - transakcyjna (wybór usługi)
+        - komercyjna lokalna (usługa + miejsce)
+        - informacyjna — definicja
+        - informacyjna — poradnik
+        - nawigacyjna (katalog, hub)
+        - konwersja B2B
+        - konwersja — lista startowa
+        - decyzja, bez intencji strony
+    validations:
+      required: true
+  - type: input
+    id: meta_title
+    attributes:
+      label: Meta title
+      description: Około 60 znaków wyświetlanych. Na stronie głównej cały tytuł z brandem. Na pozostałych bez „| Szambiarka.pl”. Brand w tytule dokładnie raz.
+      placeholder: Wywóz szamba i usługi asenizacyjne w Polsce
+    validations:
+      required: false
+  - type: input
+    id: meta_description
+    attributes:
+      label: Meta description
+      description: Około 155 znaków, unikalna dla tego URL. Na gminach opis pochodzi z korpusu tej gminy, nie ze wspólnego stempla.
+      placeholder: Jedno lub dwa zdania, które mówią, co jest na stronie i co czytelnik może zrobić dalej.
+    validations:
+      required: false
+  - type: input
+    id: h1
+    attributes:
+      label: H1
+      description: Jedno H1. Bez tekstu przycisków, wstążek zaufania i wezwań do zapisu.
+      placeholder: Wywóz szamba online. Zamów bez dzwonienia.
+    validations:
+      required: false
+  - type: textarea
+    id: tresc
+    attributes:
+      label: Treść
+      description: Pełny tekst strony albo artykułu, od pierwszego zdania do źródeł. Na paczce gmin wklej kontrakt sekcji i trzy próbki (bogata karta, typowa, cienka), a nie 100 stron korpusu.
+      value: |
+        ## Lead
+        Pierwsze zdanie odpowiada na frazę główną.
+
+        ## Sekcje
+        H2 i akapity. Na stronie lokalnej: uwaga (miejsce i usługa), zainteresowanie (liczby z karty, sekcja odpada gdy liczb nie ma), zasięg (miejscowości i sąsiedzi z karty), działanie (zapis na start).
+
+        ## Czego w tekście nie ma
+        Obietnica przyjazdu, liczba firm, czas dojazdu, kwota bez źródła, zezwolenie, „nasze wozy”.
+    validations:
+      required: false
+  - type: textarea
+    id: faq
+    attributes:
+      label: FAQ i schema FAQPage
+      description: Pytanie i odpowiedź, które będą widoczne. Schema dostaje ten sam zestaw. Na L3/L4 trzy pytania z faktów tej strony. Puste, gdy strona nie ma FAQ.
+      value: |
+        ### Pytanie
+        Odpowiedź tymi samymi liczbami, co treść.
+
+        ### Pytanie
+        Odpowiedź.
+    validations:
+      required: false
+  - type: textarea
+    id: linki
+    attributes:
+      label: Linki wewnętrzne
+      description: Adres, anchora i po co link. Strona lokalna linkuje województwo i sąsiadów z katalogu. Artykuł linkuje właściciela frazy, nie losowy poradnik.
+      placeholder: |
+        - https://szambiarka.pl/poradnik/umowa-na-wywoz-szamba — anchora „umowa na wywóz szamba” — odesłanie obowiązku, bez streszczania ustawy
+    validations:
+      required: false
+  - type: textarea
+    id: cta
+    attributes:
+      label: CTA
+      description: Dokładny adres i etykieta przycisku. W soft-openie klient idzie na /powiadom-mnie, firma na /firma. Snippet zostawia frazę usługi.
+      value: |
+        - Główne CTA klienta: https://szambiarka.pl/powiadom-mnie — „Powiadom mnie o starcie”
+        - CTA firmy, jeśli strona je ma: https://szambiarka.pl/firma — „Dla firm asenizacyjnych”
+    validations:
+      required: true
+  - type: textarea
+    id: grafiki
+    attributes:
+      label: Grafiki i tabele
+      description: Co ma powstać (tabela, schemat, zdjęcie) i jaki ma tekst alternatywny. Istniejące pliki podawaj ścieżką z repo. Nowa grafika bez pliku zostaje opisem, nie obietnicą, że plik już jest.
+      placeholder: |
+        - Tabela: porównanie dokumentów na kontrolę. Bez kwot.
+        - Grafika: brak. Artykuł definicji szamba może odesłać do schematu, gdy będzie plik w public/images/poradnik/.
+    validations:
+      required: false
+  - type: textarea
+    id: zrodla
+    attributes:
+      label: Źródła faktów
+      description: Skąd wzięła się każda liczba, data i zdanie o obowiązku. GUS BDL, stacja zlewna z karty, przepis z cytatem, dataset cen albo tekst już opublikowany. Puste źródło oznacza, że zdania nie ma w treści.
+      placeholder: |
+        - Liczba zbiorników: metadata.septic_tanks, rok metadata.stats_year, GUS BDL
+        - Stacje zlewne: metadata.dumping_stations, bot Stacje Zlewne tylko gdy pole jest na karcie
+        - Przepis: pełna nazwa aktu, data, Dz.U., cytat, stan prawny na dzień
+    validations:
+      required: false
+  - type: textarea
+    id: niepotwierdzone
+    attributes:
+      label: Rzeczy niepotwierdzone
+      description: Zdania, których nie wolno wstawić, dopóki nie ma źródła. To lista blokad, nie szkic do publikacji.
+      placeholder: |
+        - Czas dojazdu w tej gminie — brak danych
+        - Liczba firm jeżdżących pod ten adres — brak danych
+    validations:
+      required: false
+  - type: checkboxes
+    id: akceptacja
+    attributes:
+      label: Checklista akceptacji
+      description: Zaznaczacie przy przejściu do „Zaakceptowane”. Przy samym otwarciu issue (etap Brief) zostawcie puste.
+      options:
+        - label: Fraza główna tego URL nie jest frazą główną innego otwartego issue.
+        - label: Meta title ma około 60 znaków po złożeniu z sufiksem, a brand pada w tytule raz.
+        - label: Meta description ma około 155 znaków i opisuje tylko tę stronę.
+        - label: H1 jest treścią strony, bez etykiet przycisków i bez „Wpisz miejscowość”.
+        - label: W issue jest pełny tekst, nie tylko lista zadań dla copywritera.
+        - label: FAQ w schema jest tym samym zestawem, co FAQ na stronie.
+        - label: CTA klienta wskazuje https://szambiarka.pl/powiadom-mnie, a CTA firmy https://szambiarka.pl/firma.
+        - label: Tekst mówi o serwisie jako o pośredniku. Wywóz, płatność firmie i dokument robi firma.
+        - label: Każda kwota, liczba firm, czas i zezwolenie albo ma źródło w polu źródeł, albo leży w „niepotwierdzone” i nie ma jej w treści.
+        - label: Zdanie o karze, umowie, obowiązku albo kontroli ma cytat przepisu albo zostało wykreślone.
+        - label: Linki wewnętrzne prowadzą do właściciela frazy albo do sąsiedniej strony lokalnej z katalogu.
+        - label: Bartek zaakceptował tekst.
+        - label: Product Owner zaakceptował tekst.
+        - label: Wdrożenie do kodu czeka na koniec blokady soft-open. To issue nie jest pull requestem.
