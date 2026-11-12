@@ -1,0 +1,34 @@
+# Ręczna synchronizacja etykiet z .github/labels.json.
+# Jedyny wyzwalacz to workflow_dispatch: push, pull request i harmonogram
+# tego pliku nie uruchamiają i żadnych etykiet nie zakładają.
+name: Synchronizacja etykiet
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: >-
+          Nazwa repozytorium w tej organizacji, bez właściciela
+          (na przykład szambiarka albo .github).
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    name: Synchronizuj etykiety
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pobierz plik etykiet
+        # v4.4.0. Token z sekretu nie jest podawany temu krokowi.
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Utwórz lub zaktualizuj etykiety
+        env:
+          # Nazwa repo idzie zmienną, nie wklejeniem do skryptu.
+          GH_TOKEN: ${{ secrets.LABELS_SYNC_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          TARGET_NAME: ${{ inputs.repository }}
+        run: bash .github/scripts/sync-labels.sh

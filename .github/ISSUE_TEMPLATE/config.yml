@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Mapa fraz i właściciele URL
+    url: https://github.com/szambiarka-pl/szambiarka/blob/master/apps/landing-page/docs/wiki/concepts/seo-knowledge-base.md
+    about: Która fraza należy do którego URL. Zanim powstanie szkic, sprawdź właściciela.
+  - name: Plan poradnika (87 tematów, stan arkusza)
+    url: https://github.com/szambiarka-pl/szambiarka/blob/master/apps/landing-page/docs/seo-sources/agencja-2025-2026/content-plan-poradnika.md
+    about: Tematy agencji. Część TODO ma już plik MDX. Nie zakładaj drugiego slugu z tytułu arkusza.
+  - name: Brief stron lokalnych
+    url: https://github.com/szambiarka-pl/szambiarka/blob/master/data-pipeline/enrichment/writer-brief.md
+    about: Sekcje gminy, miasta i dzielnicy oraz twarde limity meta. Fakty tylko z karty.
+  - name: Rejestr decyzji
+    url: https://github.com/szambiarka-pl/szambiarka/blob/master/docs/org/rejestr-decyzji.md
+    about: Ceny, pieniądze i zasady współpracy rozstrzyga rejestr, nie issue treści.
